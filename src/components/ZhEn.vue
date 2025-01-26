@@ -1,11 +1,5 @@
 <template>
-    <v-switch 
-        v-model="model" 
-        :label="label" 
-        hide-details 
-        color="info" 
-        @change="switchLanguage"
-    ></v-switch>
+    <v-switch v-model="model" :label="label" hide-details color="info" @change="switchLanguage"></v-switch>
 </template>
 
 <script>

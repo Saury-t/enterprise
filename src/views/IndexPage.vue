@@ -4,45 +4,51 @@
 
     <v-main>
       <!-- 大型首页轮播图 -->
-      <v-carousel cycle :show-arrows="hover" hide-delimiter-background height="calc(100vh - 100px)">
-        <v-carousel-item v-for="(slide, i) in carouselSlides" :key="i" :src="slide.src" cover>
-          <v-container class="fill-height">
-            <v-row align="center">
-              <v-col cols="12" md="6">
-                <div class="carousel-content pa-4" style="color: white !important;">
-                  <h1 class="text-h3 font-weight-bold white--text mb-4">{{ slide.title }}</h1>
-                  <p class="text-h6 white--text mb-6">{{ slide.description }}</p>
-                  <v-btn color="primary" size="large" rounded @click="navigateToCollection">
-                    探索系列
-                  </v-btn>
-                </div>
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-carousel-item>
-      </v-carousel>
+      <header class="banner">
+        <h1 class="visually-hidden" style="display: none;">雪之妍内衣官方网站</h1>
+        <v-carousel cycle :show-arrows="hover" hide-delimiter-background height="calc(100vh - 100px)">
+          <v-carousel-item v-for="(slide, i) in carouselSlides" :key="i" :src="slide.src" cover>
+            <v-container class="fill-height">
+              <v-row align="center">
+                <v-col cols="12" md="6">
+                  <div class="carousel-content pa-4" style="color: white !important;">
+                    <h1 class="text-h3 font-weight-bold white--text mb-4">{{ slide.title }}</h1>
+                    <p class="text-h6 white--text mb-6">{{ slide.description }}</p>
+                    <v-btn color="primary" size="large" rounded @click="navigateToCollection">
+                      探索系列
+                    </v-btn>
+                  </div>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-carousel-item>
+        </v-carousel>
+      </header>
 
       <!-- 产品特点展示 -->
-      <v-container class="py-12">
-        <v-row justify="center" class="mb-8">
-          <v-col cols="12" class="text-center">
-            <h2 class="text-h4 font-weight-bold mb-3">匠心品质，只为极致舒适</h2>
-            <p class="text-subtitle-1">用心打造每一件作品，让您尽享优雅与自在</p>
-          </v-col>
-        </v-row>
+      <section aria-label="产品特点" class="py-16">
+        <h2 class="text-h4 text-center mb-8" style="display: none;">产品特点</h2>
+        <v-container class="py-12">
+          <v-row justify="center" class="mb-8">
+            <v-col cols="12" class="text-center">
+              <h2 class="text-h4 font-weight-bold mb-3">匠心品质，只为极致舒适</h2>
+              <p class="text-subtitle-1">用心打造每一件作品，让您尽享优雅与自在</p>
+            </v-col>
+          </v-row>
 
-        <v-row>
-          <v-col v-for="(feature, index) in features" :key="index" cols="12" md="4">
-            <v-card class="mx-auto" elevation="2" height="100%">
-              <v-img :src="feature.image" height="250" cover></v-img>
-              <v-card-text class="text-center">
-                <h3 class="text-h6 font-weight-bold mb-2">{{ feature.title }}</h3>
-                <p>{{ feature.description }}</p>
-              </v-card-text>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
+          <v-row>
+            <v-col v-for="(feature, index) in features" :key="index" cols="12" md="4">
+              <v-card class="mx-auto" elevation="2" height="100%">
+                <v-img :src="feature.image" height="250" cover></v-img>
+                <v-card-text class="text-center">
+                  <h3 class="text-h6 font-weight-bold mb-2">{{ feature.title }}</h3>
+                  <p>{{ feature.description }}</p>
+                </v-card-text>
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-container>
+      </section>
 
       <!-- 热销产品展示 -->
       <v-container class="py-12">
@@ -65,9 +71,9 @@
                 <v-card-text class="text-center">
                   <div class="text-h6 font-weight-bold mb-2">{{ product.name }}</div>
                   <div class="text-subtitle-1 mb-2">¥{{ product.price }}</div>
-                  <v-btn color="primary" variant="outlined" block>
+                  <!-- <v-btn color="primary" variant="outlined" block>
                     查看详情
-                  </v-btn>
+                  </v-btn> -->
                 </v-card-text>
               </v-card>
             </v-hover>
