@@ -138,13 +138,13 @@
           </v-col>
           <v-col cols="12" md="6">
             <v-row>
-              <v-col v-for="n in 4" :key="n" cols="6">
+              <v-col v-for="image in previewImages" :key="image.id" cols="6">
                 <v-hover v-slot="{ isHovering, props }">
                   <v-card v-bind="props" :class="{ 'on-hover': isHovering }" height="190">
-                    <v-img src="@/assets/6.png" cover height="100%">
+                    <v-img :src="image.src" cover height="100%">
                       <v-overlay :model-value="isHovering" contained class="align-center justify-center">
                         <v-btn color="white" variant="outlined">
-                          即将上市
+                          {{ image.title }}
                         </v-btn>
                       </v-overlay>
                     </v-img>
@@ -275,6 +275,30 @@ const customerReviews = ref([
     rating: 5
   }
 ])
+
+// 新品预览小图数据
+const previewImages = [
+  {
+    id: 1,
+    src: require('@/assets/2.jpg'),
+    title: '即将上市'
+  },
+  {
+    id: 2,
+    src: require('@/assets/5.png'),
+    title: '即将上市'
+  },
+  {
+    id: 3,
+    src: require('@/assets/4.jpg'),
+    title: '即将上市'
+  },
+  {
+    id: 4,
+    src: require('@/assets/3.jpg'),
+    title: '即将上市'
+  }
+]
 
 const navigateToCollection = () => {
   // 跳转到产品系列页面

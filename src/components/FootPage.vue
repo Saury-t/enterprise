@@ -3,66 +3,49 @@
         <v-container>
             <v-row>
                 <!-- 产品系列 -->
-                <v-col cols="12" md="3">
+                <v-col cols="6" sm="4" md="3" class="mb-6">
                     <h3 class="text-h6 font-weight-bold white--text mb-4">产品系列</h3>
                     <v-list density="compact" class="bg-black pa-0">
-                        <v-list-item 
-                            v-for="(item, i) in products" 
-                            :key="i"
-                            :title="item"
-                            class="px-0"
-                            style="min-height: 35px;"
-                        >
+                        <v-list-item v-for="(item, i) in products" :key="i" :title="item" class="px-0"
+                            style="min-height: 32px;">
                             <template v-slot:title>
-                                <span class="text-grey-lighten-1">{{ item }}</span>
+                                <span class="text-grey-lighten-1 footer-text">{{ item }}</span>
                             </template>
                         </v-list-item>
                     </v-list>
                 </v-col>
 
                 <!-- 购物指南 -->
-                <v-col cols="12" md="3">
+                <v-col cols="6" sm="4" md="3" class="mb-6">
                     <h3 class="text-h6 font-weight-bold white--text mb-4">购物指南</h3>
                     <v-list density="compact" class="bg-black pa-0">
-                        <v-list-item 
-                            v-for="(item, i) in shoppingGuide" 
-                            :key="i"
-                            class="px-0"
-                            style="min-height: 35px;"
-                        >
+                        <v-list-item v-for="(item, i) in shoppingGuide" :key="i" class="px-0" style="min-height: 32px;">
                             <template v-slot:title>
-                                <span class="text-grey-lighten-1">{{ item }}</span>
+                                <span class="text-grey-lighten-1 footer-text">{{ item }}</span>
                             </template>
                         </v-list-item>
                     </v-list>
                 </v-col>
 
                 <!-- 关于我们 -->
-                <v-col cols="12" md="3">
+                <v-col cols="6" sm="4" md="3" class="mb-6">
                     <h3 class="text-h6 font-weight-bold white--text mb-4">关于我们</h3>
                     <v-list density="compact" class="bg-black pa-0">
-                        <v-list-item 
-                            v-for="(item, i) in aboutUs" 
-                            :key="i"
-                            :title="item"
-                            class="px-0"
-                            style="min-height: 35px;"
-                        >
+                        <v-list-item v-for="(item, i) in aboutUs" :key="i" class="px-0" style="min-height: 32px;">
                             <template v-slot:title>
-                                <span class="text-grey-lighten-1">{{ item }}</span>
+                                <span class="text-grey-lighten-1 footer-text">{{ item }}</span>
                             </template>
                         </v-list-item>
                     </v-list>
                 </v-col>
 
                 <!-- 联系我们 -->
-                <v-col cols="12" md="3">
+                <v-col cols="6" sm="4" md="3" class="mb-6">
                     <h3 class="text-h6 font-weight-bold white--text mb-4">联系我们</h3>
-                    <p class="text-h5 font-weight-bold white--text mb-6">400-888-8888</p>
-                    <div class="d-flex gap-4 mb-4">
-                        <div v-for="(qr, i) in qrCodes" :key="i" class="text-center">
+                    <div class="qr-codes">
+                        <div v-for="(qr, i) in qrCodes" :key="i" class="qr-item mb-4">
                             <v-img :src="qr.img" width="100" height="100" class="mb-2"></v-img>
-                            <span class="text-caption text-grey-lighten-1">{{ qr.title }}</span>
+                            <span class="text-grey-lighten-1 footer-text">{{ qr.title }}</span>
                         </div>
                     </div>
                 </v-col>
@@ -72,8 +55,9 @@
             <v-row class="mt-8">
                 <v-col cols="12" class="text-center">
                     <v-divider class="mb-4" color="grey-darken-3"></v-divider>
-                    <p class="text-caption text-grey-lighten-1 mb-2">版权所有 © {{ new Date().getFullYear() }} 雪之妍 保留所有权利</p>
-                    <p class="text-caption text-grey-lighten-1">浙ICP备案号：浙ICP备XXXXXXXX号</p>
+                    <p class="text-caption text-grey-lighten-1">
+                        © {{ new Date().getFullYear() }} 雪之妍内衣 版权所有
+                    </p>
                 </v-col>
             </v-row>
         </v-container>
@@ -114,12 +98,52 @@ export default {
 </script>
 
 <style scoped>
-.v-footer {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-.v-list-item {
-    cursor: pointer;
+.footer-text {
+    font-size: 14px;
+}
+
+/* 移动端优化 */
+@media (max-width: 600px) {
+    .footer-text {
+        font-size: 13px;
+    }
+
+    .text-h6 {
+        font-size: 1rem !important;
+    }
+
+    .v-list-item {
+        min-height: 28px !important;
+    }
+
+    .qr-codes {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .qr-item {
+        text-align: center;
+    }
+}
+
+/* 平板端优化 */
+@media (min-width: 601px) and (max-width: 960px) {
+    .footer-content {
+        justify-content: flex-start;
+    }
+
+    .qr-codes {
+        display: flex;
+        gap: 1rem;
+    }
 }
 
 .v-list-item:hover .text-grey-lighten-1 {
@@ -127,7 +151,6 @@ export default {
     transition: color 0.3s ease;
 }
 
-/* 确保链接可点击 */
 .v-list-item {
     opacity: 0.8;
 }
